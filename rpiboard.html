@@ -9,6 +9,7 @@
 
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/SemanticUI/semantic.css">
+	<link rel="stylesheet" type="text/css" href="vendor/materialize/css/materialize.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -24,23 +25,35 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-<link type="text/css" href="vendor/SemanticUI/semantic.js">	
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
+	<script src="vendor/SemanticUI/semantic.min.js"></script>
+	<script src="vendor/materialize/js/materialize.min.js"></script>
+<!--===============================================================================================-->
   <script src="js/rpiboard.js"></script>
 </head>
 <body onload="loadpinout()">
+
+	<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="align justify icon"></i>
+  </a>
+  <ul>
+    <li><a class="btn-floating red" href="javascript:refresh()"><i class="sync alternate icon"></i></a></li>
+    <li><a class="btn-floating red" href="javascript:logout()"><i class="sign out alternate icon"></i></a></li>
+   </ul>
+</div>
+
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/rpi.png');">
 			<div id="pintable"></div>
 		</div>
+
 	</div>
 	
 </body>
