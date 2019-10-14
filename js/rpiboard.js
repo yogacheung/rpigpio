@@ -1,6 +1,6 @@
 function loaddata(callback){
   $.ajax({
-    url: "/api/v1/pin",    
+    url: "https://cors-anywhere.herokuapp.com/"+"http://808.bdcode.com:8500/api/v1/pin",    
   })
   .done(callback);
 }

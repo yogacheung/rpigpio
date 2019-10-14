@@ -46,16 +46,18 @@
 						Invisible Fun Studio
 					</span>
 
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-						<input class="input100" id="username" type="text" name="username" placeholder="Username">
+					<!--<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">-->
+					<div class="wrap-input100 validate-input m-b-10">
+						<input class="input100" id="username" type="text" placeholder="Username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-						<input class="input100" id="password" type="password" name="password" placeholder="Password" onkeydown = "if (event.keyCode == 13) onlogin()">
+					<!--<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">-->
+					<div class="wrap-input100 validate-input m-b-10">
+						<input class="input100" id="password" type="password" placeholder="Password" onkeydown="if (event.keyCode == 13) onlogin()">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock"></i>
@@ -63,7 +65,7 @@
 					</div>
 
 					<div class="container-login100-form-btn p-t-10">
-						<button class="login100-form-btn" type="submit" onclick="onlogin()">
+						<button class="login100-form-btn" onclick="onlogin()">
 							Login
 						</button>
 					</div>

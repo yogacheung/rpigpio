@@ -1,6 +1,7 @@
 function login(name, password, callback){
   $.ajax({    
-    url: "php/login.php?username="+name+"&password="+password,    
+    url: "http://808.bdcode.com:8580/php/login.php?username="+name+"&password="+password,    
+    //url: "php/login.php?username="+name+"&password="+password,    
   })
   .done(callback);
 }
