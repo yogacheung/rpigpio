@@ -1,33 +1,34 @@
 function loaddata(callback){
-  $.ajax({
-    url: "https://cors-anywhere.herokuapp.com/"+"http://808.bdcode.com:8500/api/v1/pin",    
+  $.ajax({ 
+    url: "http://172.22.207.82/php/fetch.php",    
   })
   .done(callback);
 }
 
 ///////////////////////////////////////////////////////////
 
-function loadpinout() {  
-
+function loadpinout() {   
+  
   $(document).ready(function(){
     $('.fixed-action-btn').floatingActionButton();
   });
 
   loaddata(function(data){
-   
+    //console.log(data);
     var pinlist = data;
-    //var pinlist = [{"event": "BOTH", "num": 5, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 6, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 7, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 8, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 9, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 10, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 11, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 12, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 13, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 14, "name": "L1", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 15, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 16, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 17, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 18, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 19, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 20, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 21, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 0, "mode": "IN"}, {"event": "BOTH", "num": 22, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 23, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 0, "mode": "IN"}, {"event": "BOTH", "num": 24, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 25, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 26, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}, {"event": "BOTH", "num": 27, "name": "", "initial": null, "bounce": 200, "resistor": "PUD_UP", "value": 1, "mode": "IN"}];
-
+    console.log(pinlist[0]);
+    
+    var numpin = {2:3, 3:5, 4:7, 5:29, 6:31, 7:26, 8:24, 9:21, 10:19, 11:23, 12:32, 13:33, 14:8, 15:10, 16:36, 17:11, 18:12, 19:35, 20:38, 21:40, 22:15, 23:16, 24:18, 25:22, 26:37, 27:13}
     var pinstate = ["Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off","Off"];
-    //var pinstatecolour = ["brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown","brown"];
+    
     var pinmsg = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
     
     for(var i=0; i<pinlist.length; i++){
-      if(pinlist[i].value == 1) {
-        pinstate[(pinlist[i].num)-1] = "On";
-        //pinstatecolour[(pinlist[i].num)-1] = "purple";
+      if(pinlist[i].value == 0) {
+        var pin = numpin[(pinlist[i].num)]
+        pinstate[pin-1] = "On";
       }  
-      pinmsg[(pinlist[i].num)-1] = " >>> Mode: " + pinlist[i].mode + " <<< ";
+      pinmsg[pinlist[pin-1]] = " >>> Mode: " + pinlist[i].mode + " <<< ";
     }
 
     var pinname = ["3v3", "5V", "GPIO2", "5V", "GPIO3", "GND", "GPIO4", "GPIO14", "GND", "GPIO15", "GPIO17", "GPIO18", "GPIO27", "GND", "GPIO22", "GPIO23", "3.3V", "GPIO24", "GPIO10", "GND", "GPIO9", "GPIO25", "GPIO11", "GPIO8", "GND", "GPIO7", "DNC", "DNC", "GPIO5", "GND", "GPIO6", "GPIO12", "GPIO13", "GND", "GPIO19", "GPIO16", "GPIO26", "GPIO20", "GND", "GPIO21"];
